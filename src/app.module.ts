@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
+import { InterestsModule } from './interests/interests.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { UserModule } from './user/user.module';
       synchronize: true, // For development only; disable in production
     }),
     UserModule,
+    InterestsModule,
     // Import other modules here
   ],
   controllers: [],

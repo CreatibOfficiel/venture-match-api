@@ -3,8 +3,11 @@ import {
     PrimaryGeneratedColumn,
     Column,
     CreateDateColumn,
+    ManyToMany,
+    JoinTable,
   } from 'typeorm';
   import { Role } from '../enums/role.enum';
+import { Interest } from 'src/interests/entities/interest.entity';
   
   @Entity()
   export class User {
@@ -29,6 +32,10 @@ import {
       default: Role.ENTREPRENEUR,
     })
     role: Role;
+
+    @ManyToMany(() => Interest)
+    @JoinTable()
+    interests: Interest[];
   
     @CreateDateColumn()
     createdAt: Date;
