@@ -13,4 +13,10 @@ export class ProjectService {
   findAll(): Promise<Project[]> {
     return this.projectRepository.find();
   }
+
+  async createProject(data: Partial<Project>): Promise<Project> {
+    // Just for demonstration, no role checks in the service yet
+    const project = this.projectRepository.create(data);
+    return this.projectRepository.save(project);
+  }
 }

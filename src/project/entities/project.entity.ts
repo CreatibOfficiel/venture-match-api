@@ -7,4 +7,10 @@ export class Project {
 
   @Column()
   title: string;
+
+  @Column({ nullable: true })
+  description?: string;
+
+  @Column('decimal', { default: 0 })
+  budget: number;
 }
