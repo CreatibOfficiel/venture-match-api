@@ -1,14 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { UserService } from '../user/user.service';
+import { InvestmentService } from '../investment/investment.service';
 
 @Injectable()
 export class AdminService {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly investmentService: InvestmentService,
+  ) {}
 
-  /**
-   * Retrieve a list of all users in the system.
-   */
   findAllUsers() {
     return this.userService.findAll();
+  }
+
+  findAllInvestments() {
+    return this.investmentService.findAll();
   }
 }

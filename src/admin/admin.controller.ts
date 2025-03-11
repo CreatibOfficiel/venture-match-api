@@ -15,4 +15,9 @@ export class AdminController {
   findAllUsers() {
     return this.adminService.findAllUsers();
   }
+
+  @Get('investments')
+  findAllInvestments() {
+    return this.adminService.findAllInvestments();
+  }
 }
