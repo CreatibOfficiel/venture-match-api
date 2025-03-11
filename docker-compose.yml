@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: nest_fastify_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nest_fastify_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - nest_network
+
+  nest_app:
+    build: .
+    container_name: nest_fastify_app
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    networks:
+      - nest_network
+
+networks:
+  nest_network:
+
+volumes:
+  postgres_data:
