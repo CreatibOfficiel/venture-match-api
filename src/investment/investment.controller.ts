@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Request } from '@nestjs/common';
 import { InvestmentService } from './investment.service';
 import { Investment } from './entities/investment.entity';
 import { Roles } from 'src/auth/decorators/roles.decorator';
@@ -20,7 +20,7 @@ export class InvestmentController {
    */
   @Post()
   @Roles(Role.INVESTOR)
-  invest(@Req() req, @Body() { projectId, amount }: { projectId: string; amount: number }) {
+  invest(@Request() req, @Body() { projectId, amount }: { projectId: string; amount: number }) {
     const user = req.user as User; // attach user from JWT
     return this.investmentService.invest(user, projectId, amount);
   }
@@ -30,7 +30,7 @@ export class InvestmentController {
    */
   @Delete(':id')
   @Roles(Role.INVESTOR)
-  cancelInvestment(@Req() req, @Param('id') id: string) {
+  cancelInvestment(@Request() req, @Param('id') id: string) {
     const user = req.user as User;
     return this.investmentService.cancelInvestment(user, id);
   }
