@@ -5,6 +5,7 @@ import { UserModule } from './user/user.module';
 import { InterestsModule } from './interests/interests.module';
 import { AuthModule } from './auth/auth.module';
 import { typeOrmConfig } from './config/typoeorm.config';
+import { ProjectModule } from './project/project.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { typeOrmConfig } from './config/typoeorm.config';
     UserModule,
     InterestsModule,
     AuthModule,
+    ProjectModule,
   ],
   controllers: [],
   providers: [],
