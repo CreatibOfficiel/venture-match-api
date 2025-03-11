@@ -1,6 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
-import { UserService } from './user.service';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { User } from './entities/user.entity';
+import { UserService } from './user.service';
 
 @Controller('users')
 export class UserController {
@@ -8,7 +8,12 @@ export class UserController {
 
   @Get()
   async findAll(): Promise<User[]> {
-    // Return all users (will be empty if none exist)
     return this.userService.findAll();
+  }
+
+  @Post()
+  async createUser(@Body() userData: { email: string; password: string }): Promise<User> {
+    // Basic creation
+    return this.userService.createUser(userData);
   }
 }
