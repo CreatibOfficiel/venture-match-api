@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { typeOrmConfig } from './config/typoeorm.config';
 import { ProjectModule } from './project/project.module';
 import { InvestmentModule } from './investment/investment.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { InvestmentModule } from './investment/investment.module';
     AuthModule,
     ProjectModule,
     InvestmentModule,
+    AdminModule,
   ],
   controllers: [],
   providers: [],
