@@ -16,4 +16,8 @@ export class AdminService {
   findAllInvestments() {
     return this.investmentService.findAll();
   }
+
+  async deleteUserById(userId: string): Promise<void> {
+    await this.userService.deleteUser(userId);
+  }
 }
