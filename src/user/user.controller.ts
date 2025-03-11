@@ -1,13 +1,14 @@
 import { Controller, Get } from '@nestjs/common';
 import { UserService } from './user.service';
+import { User } from './entities/user.entity';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  findAll(): string {
-    // For now, just return a test string
-    return 'This action returns all users';
+  async findAll(): Promise<User[]> {
+    // Return all users (will be empty if none exist)
+    return this.userService.findAll();
   }
 }
